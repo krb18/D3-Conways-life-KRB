@@ -307,10 +307,11 @@ variable neighbours
   loop
   bmp-x-size @ bmp-y-size @ * 0 do
     array @ i array_@
-    new-array @ i new-array_@ -
+    new-array @ i array_@ -
     case
       -1 of born_this_gen @ 1 + born_this_gen ! endof
       1 of die_this_gen @ 1 + die_this_gen ! endof
+      drop
     endcase
   loop
   new-array @ array !
