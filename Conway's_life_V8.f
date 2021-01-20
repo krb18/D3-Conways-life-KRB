@@ -417,6 +417,23 @@ bmp-APP-CLASS                   { Call class for displaying bmp's in a child win
   close-test-file
   ;
 
+{ test writing an array to a file NEW, aim to load array as grid in file}
+: testfilearrayNEW
+  make-test-file
+  test-file-size cr cr ." File Start Size = " d.
+  bmp-x-size @ bmp-y-size @ * 0 do
+    array @ I array_@ (.) test-file-id @ write-file drop
+    s"  " test-file-id @ write-file drop
+    I 0 >= if
+      I 1 + bmp-x-size @ mod 0 = if
+        s"  " test-file-id @ write-line drop
+      then
+    then
+  loop
+  test-file-size cr cr ." File End Size =   " d. cr cr
+  close-test-file
+  ;
+
 
 { -------------------------------------- Counter --------------------------------------- }
 
