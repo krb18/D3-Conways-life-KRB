@@ -435,7 +435,7 @@ bmp-APP-CLASS                   { Call class for displaying bmp's in a child win
 \   test-file-id !                                { file.                                  }
 \ ;
 
-: close-file                               { Close the file pointed to by the file  }
+: close-file2                               { Close the file pointed to by the file  }
   close-file drop
 ;
 
@@ -463,7 +463,7 @@ bmp-APP-CLASS                   { Call class for displaying bmp's in a child win
   array-x-size @ array-y-size @ * 0 do
     array @ I array_@ (.) array-file-id @ write-line drop
   loop
-  array-file-id @ close-file
+  array-file-id @ close-file2
   ;
 
 { writing an array to a file }
@@ -476,9 +476,9 @@ bmp-APP-CLASS                   { Call class for displaying bmp's in a child win
     born @ I 4 * + @ (.) born-file-id @ write-line drop
     die @ I 4 * + @ (.) dead-file-id @ write-line drop
   loop
-  alive-file-id @ close-file
-  dead-file-id @ close-file
-  born-file-id @ close-file
+  alive-file-id @ close-file2
+  dead-file-id @ close-file2
+  born-file-id @ close-file2
   ;
 
 { writing an array to a file NEW, aim to load array as grid in file}
@@ -493,7 +493,7 @@ bmp-APP-CLASS                   { Call class for displaying bmp's in a child win
       then
     then
   loop
-  array-file-id @ close-file
+  array-file-id @ close-file2
   ;
 
 
@@ -666,7 +666,7 @@ bmp-APP-CLASS                   { Call class for displaying bmp's in a child win
   current_gen @ 1 + current_gen !
   make_array new-array !
   array-x-size @ array-y-size @ * 0 do
-    100 rnd 4 >= if
+    100 rnd 25 >= if
       i array-x-size @ mod i array-x-size @ / num_neighbours_wrap
       case
         0 of 0 new-array @ i array_! endof
