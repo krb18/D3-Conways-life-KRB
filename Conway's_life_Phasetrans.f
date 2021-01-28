@@ -74,7 +74,7 @@ variable end_time
 
 variable stopper
 
-500 generations !                    { sets the number of generations to run the game for }
+5000 generations !                    { sets the number of generations to run the game for }
 
 200 array-x-size !                                             { set initial x grid size }
 
@@ -666,7 +666,7 @@ bmp-APP-CLASS                   { Call class for displaying bmp's in a child win
   current_gen @ 1 + current_gen !
   make_array new-array !
   array-x-size @ array-y-size @ * 0 do
-    5 rnd 1 >= if
+    100 rnd 4 >= if
       i array-x-size @ mod i array-x-size @ / num_neighbours_wrap
       case
         0 of 0 new-array @ i array_! endof
@@ -740,14 +740,14 @@ bmp-APP-CLASS                   { Call class for displaying bmp's in a child win
   make_array_variables alive !                                                  \ makes an array to store the number of live cells for each generation
   make_array old-array !
   make_array older-array !
-  setup-bmp
-  initialise-window
-  5000 ms
+  \ setup-bmp
+  \ initialise-window
+  \ 5000 ms
   generations @ 0 do
-    20 ms
+    \ 20 ms
     generation
-    display-array
-    bmp-address @ bmp-to-screen-stretch
+    \ display-array
+    \ bmp-address @ bmp-to-screen-stretch
   loop
   ms@ end_time !
   cr
